@@ -1,3 +1,3 @@
-function m = mean(x)
+function m = avg(x)
     m = sum(x) / length(x);
 end
