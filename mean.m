@@ -1,3 +1,3 @@
-function m = mean(X)
-    m = sum(X) / length(X)
+function m = mean(x)
+    m = sum(x) / length(x);
 end
