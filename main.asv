@@ -1,0 +1,24 @@
+% mean([1,1,1,1,1,2])
+
+low_b = 0; %-sqrt(3);
+up_b = 1; %sqrt(3);
+
+x = (up_b - low_b) .* rand(10000,1) + low_b;
+
+
+% y = unknown_transformation(x);
+% variance(x)
+
+n = 10000;
+success_rate = 0;
+k = 100;
+
+for i=1:n
+    sample = datasample(x, k);
+    ci = confidence_interval( k, .05, avg(sample) );
+    if ci(1) <= 0.5 && ci(2) >= 0.5
+        success_rate = success_rate + 1;
+    end
+end
+
+success_rate/n

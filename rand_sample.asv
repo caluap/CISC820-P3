@@ -1,0 +1,3 @@
+function x = rand_sample(original_x, n)
+    indices = 
+end
