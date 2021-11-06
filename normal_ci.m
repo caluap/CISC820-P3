@@ -3,11 +3,11 @@ function normal_ci(n, alpha)
     if alpha == 0.01
         ep0 = 2.58;
     elseif alpha == 0.05
-        ep0 = 1.96
+        ep0 = 1.96;
     elseif alpha == 0.1
-        ep0 = 1.64
+        ep0 = 1.64;
     elseif alpha == 0.25
-        ep0 = 1.15
+        ep0 = 1.15;
     else
         error('Alpha must be in [0.01, 0.05, 0.1, 0.25].');
     end
@@ -22,8 +22,7 @@ function normal_ci(n, alpha)
             sig = std(sample);
             ep = sig * ep0 / sqrt(k);
             sample_ci = [Xbar - ep, Xbar + ep];
-
-            % sample_ci = confidence_interval( k, .05, avg(sample) );
+            
             if sample_ci(1) <= 0.5 && 0.5 <= sample_ci(2)
                 successes = successes + 1;
             end
