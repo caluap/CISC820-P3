@@ -23,7 +23,7 @@ for func_num = 1:10
     end
     
     % Normal
-    fprint('\n\nNormal distribution');
+    fprintf('\n\nNormal distribution');
     sample = sample_normal(k, 0.1, 0.5);
     
     % Uniform
