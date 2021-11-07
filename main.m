@@ -28,7 +28,7 @@ for func_num = 1:10
                         linweis_hits = linweis_hits + 1;
                     end
                 end
-                fprintf('\ntheta=%.2f   Hits=%.2f   avg_a=%.2f   avg_b=%.2f   k=%u', theta, linweis_hits/exp_size, avg_a, avg_b, k );
+                fprintf('\ntheta=%.4f   Hits=%.4f   avg_a=%.4f   avg_b=%.4f   k=%u', theta, linweis_hits/exp_size, avg_a, avg_b, k );
             end
             fprintf('\n');
         end
@@ -57,7 +57,7 @@ for func_num = 1:10
                         linweis_hits = linweis_hits + 1;
                     end
                 end
-                fprintf('\nmu=%.2f   sigma=%.2f   Hits=%.2f   avg_a=%.2f   avg_b=%.2f   k=%u', mu, sigma, linweis_hits/exp_size, avg_a, avg_b, k );
+                fprintf('\nmu=%.4f   sigma=%.4f   Hits=%.4f   avg_a=%.4f   avg_b=%.4f   k=%u', mu, sigma, linweis_hits/exp_size, avg_a, avg_b, k );
             end            
             fprintf('\n');
         end
