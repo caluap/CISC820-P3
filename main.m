@@ -7,8 +7,8 @@ for func_num = 1:10
     
     % Bernoulli
     fprintf('\n\nBernoulli distribution');
-    for theta = [0.01, 0.1, 0.3, 0.5, 0.7, 0.9, 0.99, 0.999]
-        for k = [10, 100, 1000, 10000]
+    for theta = [0, 0.001, 0.01, 0.1, 0.25, 0.3, 0.5, 0.7, 0.75, 0.9, 0.99, 0.999, 1]
+        for k = [1000, 10000]
             linweis_hits = 0;
             for i = 1:exp_size
                 sample = sample_bernoulli(k, theta);
@@ -23,10 +23,10 @@ for func_num = 1:10
     end
     
     % Normal
-    %fprint('\n\nNormal distribution');
-    %sample = sample_normal(k, 0.1, 0.5);
+    fprint('\n\nNormal distribution');
+    sample = sample_normal(k, 0.1, 0.5);
     
     % Uniform
-    %fprintf('\n\nUniform distribution');
-    %sample = sample_uniform(k, 0, 1);
+    fprintf('\n\nUniform distribution');
+    sample = sample_uniform(k, 0, 1);
 end
