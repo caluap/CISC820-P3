@@ -7,6 +7,7 @@ normal = true;
 uniform = false;
 
 
+tic
 for func_num = 1:10
     
     fprintf('\n\n\n##### Tests for Function %u #####', func_num);
@@ -38,6 +39,7 @@ for func_num = 1:10
         % Normal
         fprintf('\n\nNormal distribution');
 
+        % https://keisan.casio.com/exec/system/1180573188
         mus     = [0.5, 0.50, 0.10, 0.90, 4.0];
         sigmas  = [0.1, 0.02, 0.02, 0.02, 0.1];
  
@@ -71,3 +73,4 @@ for func_num = 1:10
 end
 
 fprintf('\n\n\nDone!\n');
+toc
