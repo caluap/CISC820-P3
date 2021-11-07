@@ -17,14 +17,18 @@ for func_num = 1:10
         for theta = [0, 0.001, 0.01, 0.1, 0.25, 0.3, 0.5, 0.7, 0.75, 0.9, 0.99, 0.999, 1]
             for k = [100, 1000, 10000]
                 linweis_hits = 0;
+                avg_a = 0;
+                avg_b = 0;
                 for i = 1:exp_size
                     sample = sample_bernoulli(k, theta);
                     [a b] = ci(sample, func_num);
+                    avg_a = avg_a + a/exp_size;
+                    avg_b = avg_b + b/exp_size;
                     if theta >= a && theta <= b
                         linweis_hits = linweis_hits + 1;
                     end
                 end
-                fprintf('\ntheta=%g \t Hits=%g \t k=%u', theta, linweis_hits/exp_size, k );
+                fprintf('\ntheta=%.2f   Hits=%.2f   avg_a=%.2f   avg_b=%.2f   k=%u', theta, linweis_hits/exp_size, avg_a, avg_b, k );
             end
             fprintf('\n');
         end
