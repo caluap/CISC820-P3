@@ -4,7 +4,7 @@ exp_size = 10000;
 
 bernoulli = true;
 normal = true;
-uniform = false;
+uniform = true;
 
 
 tic
@@ -22,7 +22,7 @@ for func_num = 1:10
                 avg_b = 0;
                 for i = 1:exp_size
                     sample = sample_bernoulli(k, theta);
-                    [a b] = ci(sample, func_num);
+                    [a, b] = ci(sample, func_num);
                     avg_a = avg_a + a/exp_size;
                     avg_b = avg_b + b/exp_size;
                     if theta >= a && theta <= b
@@ -50,9 +50,9 @@ for func_num = 1:10
                 linweis_hits = 0;
                 avg_a = 0;
                 avg_b = 0;
-                for i = 1:exp_size
+                for j = 1:exp_size
                     sample = sample_normal(k, sigma, mu);
-                    [a b] = ci(sample, func_num);
+                    [a, b] = ci(sample, func_num);
                     avg_a = avg_a + a/exp_size;
                     avg_b = avg_b + b/exp_size;
                     if mu >= a && mu <= b
@@ -68,7 +68,30 @@ for func_num = 1:10
     % Uniform
     if uniform
         fprintf('\n\nUniform distribution');
-        sample = sample_uniform(k, 0, 1);
+        aUni = [0.00 0.25 0.4 0.98];
+        bUni = [0.01 0.5 0.6 0.99]; 
+        num_of_range = length(aUni);
+        for n = 1:num_of_range
+            for k = [10, 100, 1000, 10000]
+                hits = 0;
+                a_avg = 0;
+            
+                b_avg = 0;
+                for m = 1:exp_size
+                    sampleUni = sample_uniform(k, aUni(n) , bUni(n));
+                    [a , b] = ci(sampleUni, func_num);
+                    a_avg = a_avg + a/exp_size;
+                    b_avg = b_avg + b/exp_size;
+                    thetaUni = (aUni(n) + bUni(n))/2;
+                    if thetaUni >= a && thetaUni <= b
+                        hits = hits + 1;
+                    end
+                end
+                fprintf('\nbounds=[%.4f , %.4f]   theta=%.4f   Hits=%.4f   a_avg=%.4f   b_avg=%.4f   k=%u',aUni(n) , bUni(n) , thetaUni, hits/exp_size, a_avg, b_avg, k );
+
+            end
+            fprintf('\n');
+        end
     end
 end
 
